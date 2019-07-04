@@ -1,0 +1,12 @@
+{
+    "load_extensions": {
+        "nbextensions_configurator/config_menu/main": true
+    },
+    "rise": {
+        "transition": "fade",
+        "slideNumber": "false",
+        "controls": false,
+        "progress": false,
+        "center": false
+    }
+}
