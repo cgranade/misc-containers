@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file qsharp-rise/Dockerfile --tag qsharp-rise:$(date +%s)
+      run: docker build qsharp-rise --tag qsharp-rise:$(date +%s)
     - name: Docker login
       run: docker login docker.pkg.github.com -u cgranade -p ${{ secrets.GITHUB_PACKAGE_TOKEN }}
     - name: Docker tag
