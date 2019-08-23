@@ -10,12 +10,14 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
+    - name: Set environment variables
+      run: export IMAGE_TAG=$(date +%s)
     - name: Build the Docker image
-      run: docker build qsharp-rise --tag qsharp-rise:$(date +%s)
+      run: docker build qsharp-rise --tag qsharp-rise:${IMAGE_TAG}
     - name: Docker login
       run: docker login docker.pkg.github.com -u cgranade -p ${{ secrets.GITHUB_PACKAGE_TOKEN }}
     - name: Docker tag
-      run: docker tag qsharp-rise:$(date +%s) docker.pkg.github.com/cgranade/misc-containers/qsharp-rise:$(date +%s)
+      run: docker tag qsharp-rise:${IMAGE_TAG} docker.pkg.github.com/cgranade/misc-containers/qsharp-rise:${IMAGE_TAG}
     - name: Docker push
-      run: docker push docker.pkg.github.com/cgranade/misc-containers/qsharp-rise:$(date +%s)
+      run: docker push docker.pkg.github.com/cgranade/misc-containers/qsharp-rise:${IMAGE_TAG}
  
